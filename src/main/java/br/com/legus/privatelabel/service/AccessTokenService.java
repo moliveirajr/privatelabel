@@ -2,8 +2,15 @@ package br.com.legus.privatelabel.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import io.jsonwebtoken.Jwts;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -15,7 +22,7 @@ import java.util.Map;
 
 @Service
 @Slf4j
-public class PrivateKeyService {
+public class AccessTokenService {
 
     private String privateKey = "-----BEGIN PRIVATE KEY-----\n" +
             "MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDgtZ+AeFbb78N6\n" +
@@ -57,7 +64,7 @@ public class PrivateKeyService {
         return (RSAPrivateKey) kf.generatePrivate(keySpec);
     }
 
-    public String getPrivateKey () {
+    public String getToken() {
 
         RSAPrivateKey keyBradesco = null;
         try {
@@ -82,6 +89,22 @@ public class PrivateKeyService {
                 .setHeader(mapHeader)
                 .setClaims(mapClaims)
                 .signWith(keyBradesco).compact();
+    }
+
+    public ResponseEntity<String> getAccessToken() {
+
+        String uri = "https://proxy.api.prebanco.com.br/auth/server/v1.1/token";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
+        map.add("grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer");
+        map.add("assertion",getToken());
+
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
+
+        return new RestTemplate().postForEntity(uri, request , String.class);
     }
 
 }

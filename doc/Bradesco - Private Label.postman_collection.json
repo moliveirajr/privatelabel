@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "d9107b57-36eb-48ed-9522-03748b9f355d",
+		"name": "Bradesco - Private Label",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Token",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+							"type": "text"
+						},
+						{
+							"key": "assertion",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL3Byb3h5LmFwaS5wcmViYW5jby5jb20uYnIvYXV0aC9zZXJ2ZXIvdjEuMS90b2tlbiIsInN1YiI6IjhmZjE2NmE0LTI1NDctNDM5OC04NGVkLTgzYTUyYWE1ZTY3NiIsImlhdCI6IjE2MjUwOTM2MDEiLCJleHAiOiIxNjI3Njg1NjAxIiwianRpIjoiMTYyNTA5MzYwMTM0MSIsInZlciI6IjEuMSJ9.atsQrMGjFF2GzFbhKzLl4ZwYNr/9z5HPGBiBaTFxP5wI46ML2tYPSswA7ZNpN49I0HW86Dan2v5Lu3dcEl6N3wbYBzrL8qeC2tEVC7LxzKiQ5+x6+8pgbcg0NqJ5JcdGug9RguENw2x8510ZOExm2mXnKvH8W4cLZeRo9PpxlI5zSDLNccU/GeDIvaRg5clV9YbvJ/nI/h11iLtPcK5YSK67Odkud2f7A1K9scAHSNZx1CUhVKydcCn1KKR4Zn9i89Seb6KmFzL4XZXeZ92j9EF6erH6kan0MOO3fgOTuSQU3SHZhVjeKYvr5Gxgqs/VeEYPsn481CGmhX6YXUOnZA==",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://proxy.api.prebanco.com.br/auth/server/v1.1/token",
+					"protocol": "https",
+					"host": [
+						"proxy",
+						"api",
+						"prebanco",
+						"com",
+						"br"
+					],
+					"path": [
+						"auth",
+						"server",
+						"v1.1",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teste Assinatura",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.ew0KICJ2ZXIiOiAiMS4wIiwNCiAiaXNzIjogImh0dHBzOi8vcHJveHkuYXBpLnByZWJhbmNvLmNvbS5ici9hdXRoL3NlcnZlci92MS4xL3Rva2VuIiwNCiAiYXVkIjogImh0dHBzOi8vcHJveHkuYXBpLnByZWJhbmNvLmNvbS5icjo4NDQzIiwNCiAiaWF0IjogMTYyNTA5MzgzMiwNCiAiZXhwIjogMTYyNzY4NTYwMSwNCiAic2NwIjogIkJDUEEiLA0KICJqdGkiOiAibW9ja1Nlc3Npb241NjY1MTY0Njc4NDg4MjU3ODQ0NTQ0NDU4NTYzMzg5NDU4OTkzMCIsDQogInRva2VuVHlwZSI6ICJhY2Nlc3MiLA0KICJjbGllbnRUeXBlIjogInNlcnZlciIsDQogIm93bmVyVHlwZSIgOiAic2VydmVyIiwNCiAiYXV0aERhdGEiOiAiZXlKMGVYQWlPaUpLVjFRaUxDSmpkSGtpT2lKS1YxUWlMQ0poYkdjaU9pSlNVMEV0VDBGRlVDSXNJbVZ1WXlJNklrRXlOVFpEUWtNdFNGTTFNVElpZlEuQUZ3UU9mMjNQYjh5bnByUUJJTVY1ZUVGb052amRnWEd6U1RRdFRCcnU0SzdoeEI4dFpHWFplT1BJVV9PVVB3aVB0QzNjXzlUUnpKWmpnLXl6TjdiRTAxaTZwbHpKYmptRm4tN3NjZTg0Zkhhc3loZlRmWXRxUHpHSmJoVFBEaldSWTVzcWtGb2RNeDdWUTFrc0RseWlQNjlNSklSQnA3N3I0d20zeTB0LUh2X1BwMXoxSjRvYjZKLThHTjFMLXAxNUJQMXlyZ2RvNHJ2cHJuWkpsWFVqekF6ZmRNYXRtN2t4REstV3pHNEo1QkZHeklHb0E2Y0pVbTZFSGZISGR0UHpXR0tLQjVSUndYSlhUUVZZQWU2UTNXVE1kMzQ4M0k4ZFNGci1tUzZvbVpybkhPc3I0Y2VpeWEyeHBOTU1Pa1RZdjJvQVBzeU44RFR4RXV6bHZ4dHVtWFJycHdfMzdXdUF1bG5jYXhBUDBTcVpLNFhfZDJTakF0UURTU2g0TlE4VVlVZXRtemNlbVgxMWdkckM3QXlzZXZBZ3BDaVdOUDZGX0JpR3VuV29IZUZxRnpfNXg0cUxCczRpSi0yMUcyTlVINzdNN1ZKcjRQclhhcW1VakkwY3dJN2FpcWxXNWV3dko5NG5QdVNwUjRRSDZ3UUt0cnpBWUJ5dkxUQ1N2UXI0ZzljcWVhME1UaUxWSjkwUm5nQW96MHlqT255SC1EZzczSnJRa3hxSi10SUFpYnluQ1BhdUpQVlU5S2xoNkl5dmlXODkwRGwtVnhhZW5jZDdmWkwxV2t0bFlmcnFiTm5KU2RhZVZ2dllKRjdaVkR3SXNuR2hpeDk0QmZGeFpTekhKWmJGazVKSlFYTTdCcjZTNlBjRlFNRHFzRmZuWFE3OFIyRGNveWZPOGcuVVJXSWNrWWVMeGpHNHR2eU5aRy1mdy41aDR2NXJNck5fSU9PcjRkZjB4cUtNTDV1RUxEN2JhbzFEdFV0RmRJbUJ1VUNKOWJkLWNaaEs5Y0JzU3lZUXdmd1diMFZwbE9KV1FES1F2b1JHV3JKSzBWS1ZGazRwUkJVMGxBb3IxYjZEX1poSW54a3NWUUtmOXA5Y3diWTI4YjF1MGU1X0wtSG5CWV9QajBiX1RJWlZxTmlVa1lFaUNWNHk2V1A5U3ZldC0tQV9VNmF3WUpJLU1QUTNNeDljNmtlTmVaTTQ2VUhPSG9QcTdmcTlleEhTWnc0a29QRWFDcVU3MkhwbVZGbmJmUjJVSnY5aUpGeWI2dk9jNHdkX3pDajFKeEtycF9yNnNpY1pfYms5OUF0dDQ1VndpLXdMYXhoNEg3ZGpyRTRTRWxjVnlwZFhleEczMjJhQlhvMDJINjNocFJQR1NVekpsbC1JU0hQQ3FLeEE5c2tjTm9fTU1ZY3hNWXRBREdhc2NxeWdUNFA0enBTNjVJMmVXWHFqa1lqUTB0ZWxaM3Job3BjTFFfRW9Wem5FeFJDRG52bEhqaUhaTmtfXy1DTnJ2akpfTGJ5bTh5cGRfUGhPU0dhVk9kcTZTUWViU2RfMUotLWhNRTlXTFVrZWZmTzBVNGhDZzk2RHZ1WXJxVi1EWUc3bUM2OVJsbVZDVGREcXpiUFo0Y25DTTJpY21mMnpYdDRCSkJKTExqOFU2RGlVak93SXlVN1lMQ21nd0hoM2VYNWJvNGp0aE5YTmFSUWhiM1JRVWZwV0g3VXJ3dTA0MnZWVVBuajV6WGdvejRLMWlkUUs1Y1dJYWdzY0psXzktS2lwYWZhd1VoWElPcHdzTjNOSUVCQVNCdzRDN3paQmRUY1FIUncwVkMyazFwRGwtRG5uR3JRWXlFYnlEVHFONUQzcmltdzlCUlEtaGxRa0J3OHN1Q0RmV0FtMFVYVVZEUXFhZHNoaWRZU0xrc3NXMUFVLURFb1VtVjFGS2hSb2NUUWw4Z1FBb0hvbXFYOXhvOVRxcGpwbHByb2Z4NXV1U2Zhd3Y1ZTM0MU44NkgwcmVxQ1ZTZU1XV1dnODhPbmZIclV4REhpazBfM1lBY2V1TXltTjAtd3pfdUdTRWpVdDFfNE9tUTk0N1BvYjhCVWtnTDBhQ2Ntdkx1QXd3dGdHTElBSmFCOHhZYlEweGlCQ2dVUVc1bzNBV09DdEtqRTdJSm81SWVOS0kyd3hySkRQM0JtSmYyaW1iLUpGbnhQUURxdC1valBHZktIYkpHeDhYZGxFSlIwbjRQTU42NUFzWE5NSmQ2NUxjdnRxZWpYNWYyZnpPS1htZjZkYVByRGtRSmtwM2R4bXhhaFlaQ0p6a0VibktJWS1OeHBnWVRwOTU5aURfVUlQSVgycWx0ZTJrV2gweGpwNV8tS3c1M0dwWndoZXVDczM2elpQYVZfcVFodEs2UG1lSlZoZHZoWDBFTXItR08wem1mT1FDa3IwZ3B2NG9Fa2FTSVJWTDJCRFZ5alpPX1YyQmp3a3pScjdxZDMtY0pSbDBjVEhOSTF2bjdDUm42VmQwWGUwTEw3WmRvbHRheFNPbjluNVIxdklVQmd0ZnF0bFluS09lSHVPejhVOFJWVXF5R1hSdzkzM3JnaDlXRk5EQ1NsQkNBS0VRdmdCYVNRZUduaUJ2SHpkR0JZNmNzbU5WNTRzbzgxUzRfV3Q5TlJkQk1HdkgxUkk3ZHBkWk1wOVF3UWVtRFBkTWZkRUg2TU5GdkZvaGk0T0NSWjFnSHVyTV9GS0s0MF9KNmFiMU1NMkt2eERPc0FJdTZadDhBVnRDX3NycklxWGs1MTU0S0pITWUyS2EtN1VNSWJral9LM3hFbWxXSV9KamxQdlBBcnNraE1HbUZadk9GWDFuZnhrNkQ2QnJLOUpRaFRPZVhHNTBVQ2hnSFRJOC5jZ3hxV3ZVRUZQcFR1RGxuUlNQVjVxZlhybkFmN3VoY2RxbnN0dGJ0aERNIg0KfQ.fXkoTdIw92osbP7rX0WJC9QYy4yESTLVkxYAnzyCAB8v6FG0y-zUd4cc39t3XscBr9xzN73pNDKePtcLapD1C4J_P8hV5LUMupiNPRZPpbHNs3MSpY7swyyhiW_ySu1eloyEmu0y1B-BsKa_7RjpE9rOyRcbKKaR_KYKEo5NxO6spruq-5OJtPiPqi5jxSYx_fJjtDgyYOEMb-SmF1_GJOtZbjIqkebpqtN7umBXCOC_7L1inWdB1zZww9W6-fXJv2o3KKn_UQQbnlAETqKmBEYWOv7w3fAtWIkGWnWc6OvNV4b2Xm63kwk8YOnkFw9cvqZ_potyDLj-WpHDHZOdQmXS_m4fvsq7lwCSGQFZUmbdRI-9lUVsVuOpV0h7-ocWfliCEHcnMP88W3s0OHnml8DQ0lJzZhjrgAvAZnv00DOEPAruX8CgbDtcc9q-QEm-Kb1gt-dbq1vwQ2oyd9lS4reA_vosdlBeeITJ5ebsVKO64v2HejXAyEoOI7GyIywv4D90SDcAWsTMJxoTT_HNlfsn02KB5nCegDmSM_EIYMzwYiAqg7UfpwRRAOF2-ie2E-43rZKJNszXg6ekauLT-TyOyCtiNAXkSwf_NUa6PYq-L-JFhnsqReWPjnFf0V6grkWshKhv9ll6gClia8_yIPyCWt_G1TdzyBJgQsOxZKM",
+						"type": "text"
+					},
+					{
+						"key": "X-Brad-Signature",
+						"value": "atsQrMGjFF2GzFbhKzLl4ZwYNr/9z5HPGBiBaTFxP5wI46ML2tYPSswA7ZNpN49I0HW86Dan2v5Lu3dcEl6N3wbYBzrL8qeC2tEVC7LxzKiQ5+x6+8pgbcg0NqJ5JcdGug9RguENw2x8510ZOExm2mXnKvH8W4cLZeRo9PpxlI5zSDLNccU/GeDIvaRg5clV9YbvJ/nI/h11iLtPcK5YSK67Odkud2f7A1K9scAHSNZx1CUhVKydcCn1KKR4Zn9i89Seb6KmFzL4XZXeZ92j9EF6erH6kan0MOO3fgOTuSQU3SHZhVjeKYvr5Gxgqs/VeEYPsn481CGmhX6YXUOnZA==",
+						"type": "text"
+					},
+					{
+						"key": "X-Brad-Nonce",
+						"value": "1625095034975",
+						"type": "text"
+					},
+					{
+						"key": "X-Brad-Timestamp",
+						"value": "2021-06-30T20:17:14-03:00",
+						"type": "text"
+					},
+					{
+						"key": "X-Brad-Algorithm",
+						"value": "SHA256",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"teste\":\"valor\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://proxy.api.prebanco.com.br/v1.1/jwt-service",
+					"protocol": "https",
+					"host": [
+						"proxy",
+						"api",
+						"prebanco",
+						"com",
+						"br"
+					],
+					"path": [
+						"v1.1",
+						"jwt-service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.ew0KICJ2ZXIiOiAiMS4wIiwNCiAiaXNzIjogImh0dHBzOi8vcHJveHkuYXBpLnByZWJhbmNvLmNvbS5ici9hdXRoL3NlcnZlci92MS4xL3Rva2VuIiwNCiAiYXVkIjogImh0dHBzOi8vcHJveHkuYXBpLnByZWJhbmNvLmNvbS5icjo4NDQzIiwNCiAiaWF0IjogMTYyNTA5MzgzMiwNCiAiZXhwIjogMTYyNzY4NTYwMSwNCiAic2NwIjogIkJDUEEiLA0KICJqdGkiOiAibW9ja1Nlc3Npb241NjY1MTY0Njc4NDg4MjU3ODQ0NTQ0NDU4NTYzMzg5NDU4OTkzMCIsDQogInRva2VuVHlwZSI6ICJhY2Nlc3MiLA0KICJjbGllbnRUeXBlIjogInNlcnZlciIsDQogIm93bmVyVHlwZSIgOiAic2VydmVyIiwNCiAiYXV0aERhdGEiOiAiZXlKMGVYQWlPaUpLVjFRaUxDSmpkSGtpT2lKS1YxUWlMQ0poYkdjaU9pSlNVMEV0VDBGRlVDSXNJbVZ1WXlJNklrRXlOVFpEUWtNdFNGTTFNVElpZlEuQUZ3UU9mMjNQYjh5bnByUUJJTVY1ZUVGb052amRnWEd6U1RRdFRCcnU0SzdoeEI4dFpHWFplT1BJVV9PVVB3aVB0QzNjXzlUUnpKWmpnLXl6TjdiRTAxaTZwbHpKYmptRm4tN3NjZTg0Zkhhc3loZlRmWXRxUHpHSmJoVFBEaldSWTVzcWtGb2RNeDdWUTFrc0RseWlQNjlNSklSQnA3N3I0d20zeTB0LUh2X1BwMXoxSjRvYjZKLThHTjFMLXAxNUJQMXlyZ2RvNHJ2cHJuWkpsWFVqekF6ZmRNYXRtN2t4REstV3pHNEo1QkZHeklHb0E2Y0pVbTZFSGZISGR0UHpXR0tLQjVSUndYSlhUUVZZQWU2UTNXVE1kMzQ4M0k4ZFNGci1tUzZvbVpybkhPc3I0Y2VpeWEyeHBOTU1Pa1RZdjJvQVBzeU44RFR4RXV6bHZ4dHVtWFJycHdfMzdXdUF1bG5jYXhBUDBTcVpLNFhfZDJTakF0UURTU2g0TlE4VVlVZXRtemNlbVgxMWdkckM3QXlzZXZBZ3BDaVdOUDZGX0JpR3VuV29IZUZxRnpfNXg0cUxCczRpSi0yMUcyTlVINzdNN1ZKcjRQclhhcW1VakkwY3dJN2FpcWxXNWV3dko5NG5QdVNwUjRRSDZ3UUt0cnpBWUJ5dkxUQ1N2UXI0ZzljcWVhME1UaUxWSjkwUm5nQW96MHlqT255SC1EZzczSnJRa3hxSi10SUFpYnluQ1BhdUpQVlU5S2xoNkl5dmlXODkwRGwtVnhhZW5jZDdmWkwxV2t0bFlmcnFiTm5KU2RhZVZ2dllKRjdaVkR3SXNuR2hpeDk0QmZGeFpTekhKWmJGazVKSlFYTTdCcjZTNlBjRlFNRHFzRmZuWFE3OFIyRGNveWZPOGcuVVJXSWNrWWVMeGpHNHR2eU5aRy1mdy41aDR2NXJNck5fSU9PcjRkZjB4cUtNTDV1RUxEN2JhbzFEdFV0RmRJbUJ1VUNKOWJkLWNaaEs5Y0JzU3lZUXdmd1diMFZwbE9KV1FES1F2b1JHV3JKSzBWS1ZGazRwUkJVMGxBb3IxYjZEX1poSW54a3NWUUtmOXA5Y3diWTI4YjF1MGU1X0wtSG5CWV9QajBiX1RJWlZxTmlVa1lFaUNWNHk2V1A5U3ZldC0tQV9VNmF3WUpJLU1QUTNNeDljNmtlTmVaTTQ2VUhPSG9QcTdmcTlleEhTWnc0a29QRWFDcVU3MkhwbVZGbmJmUjJVSnY5aUpGeWI2dk9jNHdkX3pDajFKeEtycF9yNnNpY1pfYms5OUF0dDQ1VndpLXdMYXhoNEg3ZGpyRTRTRWxjVnlwZFhleEczMjJhQlhvMDJINjNocFJQR1NVekpsbC1JU0hQQ3FLeEE5c2tjTm9fTU1ZY3hNWXRBREdhc2NxeWdUNFA0enBTNjVJMmVXWHFqa1lqUTB0ZWxaM3Job3BjTFFfRW9Wem5FeFJDRG52bEhqaUhaTmtfXy1DTnJ2akpfTGJ5bTh5cGRfUGhPU0dhVk9kcTZTUWViU2RfMUotLWhNRTlXTFVrZWZmTzBVNGhDZzk2RHZ1WXJxVi1EWUc3bUM2OVJsbVZDVGREcXpiUFo0Y25DTTJpY21mMnpYdDRCSkJKTExqOFU2RGlVak93SXlVN1lMQ21nd0hoM2VYNWJvNGp0aE5YTmFSUWhiM1JRVWZwV0g3VXJ3dTA0MnZWVVBuajV6WGdvejRLMWlkUUs1Y1dJYWdzY0psXzktS2lwYWZhd1VoWElPcHdzTjNOSUVCQVNCdzRDN3paQmRUY1FIUncwVkMyazFwRGwtRG5uR3JRWXlFYnlEVHFONUQzcmltdzlCUlEtaGxRa0J3OHN1Q0RmV0FtMFVYVVZEUXFhZHNoaWRZU0xrc3NXMUFVLURFb1VtVjFGS2hSb2NUUWw4Z1FBb0hvbXFYOXhvOVRxcGpwbHByb2Z4NXV1U2Zhd3Y1ZTM0MU44NkgwcmVxQ1ZTZU1XV1dnODhPbmZIclV4REhpazBfM1lBY2V1TXltTjAtd3pfdUdTRWpVdDFfNE9tUTk0N1BvYjhCVWtnTDBhQ2Ntdkx1QXd3dGdHTElBSmFCOHhZYlEweGlCQ2dVUVc1bzNBV09DdEtqRTdJSm81SWVOS0kyd3hySkRQM0JtSmYyaW1iLUpGbnhQUURxdC1valBHZktIYkpHeDhYZGxFSlIwbjRQTU42NUFzWE5NSmQ2NUxjdnRxZWpYNWYyZnpPS1htZjZkYVByRGtRSmtwM2R4bXhhaFlaQ0p6a0VibktJWS1OeHBnWVRwOTU5aURfVUlQSVgycWx0ZTJrV2gweGpwNV8tS3c1M0dwWndoZXVDczM2elpQYVZfcVFodEs2UG1lSlZoZHZoWDBFTXItR08wem1mT1FDa3IwZ3B2NG9Fa2FTSVJWTDJCRFZ5alpPX1YyQmp3a3pScjdxZDMtY0pSbDBjVEhOSTF2bjdDUm42VmQwWGUwTEw3WmRvbHRheFNPbjluNVIxdklVQmd0ZnF0bFluS09lSHVPejhVOFJWVXF5R1hSdzkzM3JnaDlXRk5EQ1NsQkNBS0VRdmdCYVNRZUduaUJ2SHpkR0JZNmNzbU5WNTRzbzgxUzRfV3Q5TlJkQk1HdkgxUkk3ZHBkWk1wOVF3UWVtRFBkTWZkRUg2TU5GdkZvaGk0T0NSWjFnSHVyTV9GS0s0MF9KNmFiMU1NMkt2eERPc0FJdTZadDhBVnRDX3NycklxWGs1MTU0S0pITWUyS2EtN1VNSWJral9LM3hFbWxXSV9KamxQdlBBcnNraE1HbUZadk9GWDFuZnhrNkQ2QnJLOUpRaFRPZVhHNTBVQ2hnSFRJOC5jZ3hxV3ZVRUZQcFR1RGxuUlNQVjVxZlhybkFmN3VoY2RxbnN0dGJ0aERNIg0KfQ.fXkoTdIw92osbP7rX0WJC9QYy4yESTLVkxYAnzyCAB8v6FG0y-zUd4cc39t3XscBr9xzN73pNDKePtcLapD1C4J_P8hV5LUMupiNPRZPpbHNs3MSpY7swyyhiW_ySu1eloyEmu0y1B-BsKa_7RjpE9rOyRcbKKaR_KYKEo5NxO6spruq-5OJtPiPqi5jxSYx_fJjtDgyYOEMb-SmF1_GJOtZbjIqkebpqtN7umBXCOC_7L1inWdB1zZww9W6-fXJv2o3KKn_UQQbnlAETqKmBEYWOv7w3fAtWIkGWnWc6OvNV4b2Xm63kwk8YOnkFw9cvqZ_potyDLj-WpHDHZOdQmXS_m4fvsq7lwCSGQFZUmbdRI-9lUVsVuOpV0h7-ocWfliCEHcnMP88W3s0OHnml8DQ0lJzZhjrgAvAZnv00DOEPAruX8CgbDtcc9q-QEm-Kb1gt-dbq1vwQ2oyd9lS4reA_vosdlBeeITJ5ebsVKO64v2HejXAyEoOI7GyIywv4D90SDcAWsTMJxoTT_HNlfsn02KB5nCegDmSM_EIYMzwYiAqg7UfpwRRAOF2-ie2E-43rZKJNszXg6ekauLT-TyOyCtiNAXkSwf_NUa6PYq-L-JFhnsqReWPjnFf0V6grkWshKhv9ll6gClia8_yIPyCWt_G1TdzyBJgQsOxZKM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"usuario\": \"B7700WAP\",\r\n    \"senha\": \"Batata12\",\r\n    \"canal\": 536,\r\n    \"origem\": 1,\r\n    \"tipoPontoVenda\": 12101,\r\n    \"numeroPontoVenda\": 145\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://proxy.api.prebanco.com.br/cartoes/aquisicao/parceiros/v1/login/sgi",
+					"protocol": "https",
+					"host": [
+						"proxy",
+						"api",
+						"prebanco",
+						"com",
+						"br"
+					],
+					"path": [
+						"cartoes",
+						"aquisicao",
+						"parceiros",
+						"v1",
+						"login",
+						"sgi"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
