@@ -73,11 +73,11 @@ public class AccessTokenService {
             e.printStackTrace();
         }
 
-        Map mapHeader = new HashMap<String,Object>();
+        Map<String, Object> mapHeader = new HashMap<>();
         mapHeader.put("alg","HS256");
         mapHeader.put("typ","JWT");
 
-        Map mapClaims = new HashMap<String,Object>();
+        Map<String, Object> mapClaims = new HashMap<>();
         mapClaims.put("aud","https://proxy.api.prebanco.com.br/auth/server/v1.1/token");
         mapClaims.put("sub","8ff166a4-2547-4398-84ed-83a52aa5e676");
         mapClaims.put("iat",String.valueOf(System.currentTimeMillis() / 1_000));
