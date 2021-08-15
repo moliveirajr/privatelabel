@@ -1,28 +1,17 @@
-package br.com.legus.privatelabel.util;
+package br.com.legus.privatelabel.service.bradesco;
 
-import br.com.legus.privatelabel.entity.AccessTokenEntity;
-import io.jsonwebtoken.Jwts;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
+import br.com.legus.privatelabel.util.RSA;
 
 import java.io.IOException;
-import java.security.GeneralSecurityException;
-import java.security.interfaces.RSAPrivateKey;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.UnsupportedEncodingException;
+import java.security.*;
 
 import static br.com.legus.privatelabel.util.RSA.getPrivateKeyFromString;
 
-public class TokenBradescard {
+public class BradescardSignure {
 
-    private String baseURL = "https://proxy.api.prebanco.com.br/";
 
-    private String privateKey = "-----BEGIN PRIVATE KEY-----\n" +
+    private static final String privateKey = "-----BEGIN PRIVATE KEY-----\n" +
             "MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDgtZ+AeFbb78N6\n" +
             "ZaxJO2A6yaM7bpRAo1qm0YwvA5OsUoBt9fK0JaJP7qyTs8mqg9RradhXINH+Z+xF\n" +
             "IUSBemzlICETeVs66WyOlet8I2Cv7VISmTex4gSB42atFbV4PPOfL8hERyC2IFWw\n" +
@@ -51,42 +40,26 @@ public class TokenBradescard {
             "I5+v7O0zlrOcNWTMhiFLlbYqYQ==\n" +
             "-----END PRIVATE KEY-----\n";
 
-    public AccessTokenEntity getAccessToken() {
-        String uri = baseURL + "/auth/server/v1.1/token";
+    public static PrivateKey bradescardPrivateKey() {
 
-        RSAPrivateKey keyBradesco = null;
+        PrivateKey keyBradesco = null;
         try {
-            keyBradesco = getPrivateKeyFromString(privateKey);
+            keyBradesco = getPrivateKeyFromString (privateKey);
         } catch (IOException | GeneralSecurityException e) {
-            e.printStackTrace();
+            e.printStackTrace ( );
         }
 
-        Map<String, Object> mapHeader = new HashMap<>();
-        mapHeader.put("alg", "HS256");
-        mapHeader.put("typ", "JWT");
+        return keyBradesco;
+    }
 
-        Map<String, Object> mapClaims = new HashMap<>();
-        mapClaims.put("aud", baseURL + "/auth/server/v1.1/token");
-        mapClaims.put("sub", "8ff166a4-2547-4398-84ed-83a52aa5e676");
-        mapClaims.put("iat", String.valueOf(System.currentTimeMillis() / 1_000));
-        mapClaims.put("exp", String.valueOf((System.currentTimeMillis() / 1_000) + 2_592_000));
-        mapClaims.put("jti", String.valueOf(System.currentTimeMillis()));
-        mapClaims.put("ver", "1.1");
+    public static String bradescardSign(String message) {
 
-        String jwts = Jwts.builder()
-                .setHeader(mapHeader)
-                .setClaims(mapClaims)
-                .signWith(keyBradesco).compact();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-
-        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-        map.add("grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer");
-        map.add("assertion", jwts);
-
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
-
-        return new RestTemplate().postForObject(uri, request, AccessTokenEntity.class);
+        String signed = "";
+        try {
+            signed = RSA.sign (bradescardPrivateKey ( ), message);
+        } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException | UnsupportedEncodingException e) {
+            e.printStackTrace ( );
+        }
+        return signed;
     }
 }

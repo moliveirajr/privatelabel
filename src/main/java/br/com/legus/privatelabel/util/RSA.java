@@ -56,7 +56,7 @@ public class RSA {
     }
 
     public static String sign(PrivateKey privateKey, String message) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException, UnsupportedEncodingException {
-        Signature sign = Signature.getInstance("SHA1withRSA");
+        Signature sign = Signature.getInstance("SHA256withRSA");
         sign.initSign(privateKey);
         sign.update(message.getBytes("UTF-8"));
         return new String(Base64.encodeBase64(sign.sign()), "UTF-8");
@@ -64,7 +64,7 @@ public class RSA {
 
 
     public static boolean verify(PublicKey publicKey, String message, String signature) throws SignatureException, NoSuchAlgorithmException, UnsupportedEncodingException, InvalidKeyException {
-        Signature sign = Signature.getInstance("SHA1withRSA");
+        Signature sign = Signature.getInstance("SHA256withRSA");
         sign.initVerify(publicKey);
         sign.update(message.getBytes("UTF-8"));
         return sign.verify(Base64.decodeBase64(signature.getBytes("UTF-8")));
