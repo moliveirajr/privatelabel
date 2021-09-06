@@ -1,6 +1,6 @@
 package br.com.legus.privatelabel.controller;
 
-import br.com.legus.privatelabel.entity.AccessTokenEntity;
+import br.com.legus.privatelabel.entity.ServerToken;
 import br.com.legus.privatelabel.service.AccessTokenService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class TokenBradescardController {
 
     @ResponseBody
     @GetMapping("/api/v1/access-token")
-    public ResponseEntity<AccessTokenEntity> getAccessToken() {
+    public ResponseEntity<ServerToken> getAccessToken() {
 
         try {
             return ResponseEntity.ok().body(accessTokenService.AcessToken());

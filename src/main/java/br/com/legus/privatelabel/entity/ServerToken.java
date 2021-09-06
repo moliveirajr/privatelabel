@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccessTokenEntity {
+public class ServerToken {
     private String access_token;
     private String token_type;
     private String expires_in;

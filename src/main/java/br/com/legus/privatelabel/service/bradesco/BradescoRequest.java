@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 @Slf4j
 public class BradescoRequest {
 
-    public static HttpEntity getRequest(String endpoint, String metodo, String parametros, ObjectNode body) {
+    public static HttpEntity getRequest(String endpoint, String metodo, String parametros, String body) {
 
         Long nonce = System.currentTimeMillis ( );
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern ("yyyy-MM-dd'T'HH:mm:ss'-03:00'");
@@ -39,7 +39,7 @@ public class BradescoRequest {
         headers.add ("X-Brad-timestamp", timeStamp);
         headers.add ("X-Brad-Algorithm", "SHA256");
 
-        HttpEntity<String> request = new HttpEntity<> (body.toString ( ), headers);
+        HttpEntity<String> request = new HttpEntity<> (body, headers);
 
         return request;
     }

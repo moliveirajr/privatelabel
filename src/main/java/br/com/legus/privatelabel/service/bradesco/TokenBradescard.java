@@ -1,6 +1,6 @@
 package br.com.legus.privatelabel.service.bradesco;
 
-import br.com.legus.privatelabel.entity.AccessTokenEntity;
+import br.com.legus.privatelabel.entity.ServerToken;
 import io.jsonwebtoken.Jwts;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -14,18 +14,17 @@ import java.util.Map;
 
 public class TokenBradescard {
 
-    private static final String baseURL = "https://proxy.api.prebanco.com.br/";
-
-    public static AccessTokenEntity getAccessToken() {
-        String uri = baseURL + "/auth/server/v1.1/token";
+    public static ServerToken getAccessToken() {
+        String uri = "https://proxy.api.prebanco.com.br/auth/server/v1.1/token";
+        String clientId = "8ff166a4-2547-4398-84ed-83a52aa5e676";
 
         Map<String, Object> mapHeader = new HashMap<>();
         mapHeader.put("alg", "HS256");
         mapHeader.put("typ", "JWT");
 
         Map<String, Object> mapClaims = new HashMap<>();
-        mapClaims.put("aud", baseURL + "/auth/server/v1.1/token");
-        mapClaims.put("sub", "8ff166a4-2547-4398-84ed-83a52aa5e676");
+        mapClaims.put("aud", uri);
+        mapClaims.put("sub", clientId);
         mapClaims.put("iat", String.valueOf(System.currentTimeMillis() / 1_000));
         mapClaims.put("exp", String.valueOf((System.currentTimeMillis() / 1_000) + 2_592_000));
         mapClaims.put("jti", String.valueOf(System.currentTimeMillis()));
@@ -45,13 +44,13 @@ public class TokenBradescard {
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
-        return new RestTemplate().postForObject(uri, request, AccessTokenEntity.class);
+        return new RestTemplate().postForObject(uri, request, ServerToken.class);
     }
 
     public static String strAccessToken() {
 
-        AccessTokenEntity accessTokenEntity = getAccessToken();
-        return accessTokenEntity.getAccess_token();
+        ServerToken serverToken = getAccessToken();
+        return serverToken.getAccess_token();
     }
 
 }
