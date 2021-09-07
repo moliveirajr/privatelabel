@@ -21,7 +21,7 @@ public class TokenBradescardController {
     public ResponseEntity<ServerToken> getAccessToken() {
 
         try {
-            return ResponseEntity.ok().body(accessTokenService.AcessToken());
+            return ResponseEntity.ok().body(accessTokenService.AccessToken ());
         } catch (Exception e) {
             e.printStackTrace();
         }

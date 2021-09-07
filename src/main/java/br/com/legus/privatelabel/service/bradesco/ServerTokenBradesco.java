@@ -12,9 +12,10 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TokenBradescard {
+public class ServerTokenBradesco {
 
     public static ServerToken getAccessToken() {
+        // TODO: 07/09/2021 Modificar para properties 
         String uri = "https://proxy.api.prebanco.com.br/auth/server/v1.1/token";
         String clientId = "8ff166a4-2547-4398-84ed-83a52aa5e676";
 
@@ -46,9 +47,7 @@ public class TokenBradescard {
 
         return new RestTemplate().postForObject(uri, request, ServerToken.class);
     }
-
     public static String strAccessToken() {
-
         ServerToken serverToken = getAccessToken();
         return serverToken.getAccess_token();
     }

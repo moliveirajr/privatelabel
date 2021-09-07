@@ -1,12 +1,8 @@
 package br.com.legus.privatelabel.service.bradesco;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.web.client.RestTemplate;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -20,7 +16,7 @@ public class BradescoRequest {
         Long nonce = System.currentTimeMillis ( );
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern ("yyyy-MM-dd'T'HH:mm:ss'-03:00'");
         String timeStamp = ZonedDateTime.now (ZoneId.systemDefault ( )).format (formatter);
-        String strAccessToken = TokenBradescard.strAccessToken ( );
+        String strAccessToken = ServerTokenBradesco.strAccessToken ( );
 
         StringBuilder payload = new StringBuilder ( );
         payload.append (metodo).append ("\n")

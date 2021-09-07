@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
-public class TokenBradescardTeste {
+public class ServerTokenBradescoTeste {
 
     private final String baseURL = "https://proxy.api.prebanco.com.br";
 
