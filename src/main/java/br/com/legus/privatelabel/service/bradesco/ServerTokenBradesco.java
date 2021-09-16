@@ -2,9 +2,12 @@ package br.com.legus.privatelabel.service.bradesco;
 
 import br.com.legus.privatelabel.entity.ServerToken;
 import io.jsonwebtoken.Jwts;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -15,8 +18,8 @@ import java.util.Map;
 public class ServerTokenBradesco {
 
     public static ServerToken getAccessToken() {
-        // TODO: 07/09/2021 Modificar para properties 
-        String uri = "https://proxy.api.prebanco.com.br/auth/server/v1.1/token";
+        // TODO: 07/09/2021 Modificar para properties
+        String url = "https://proxy.api.prebanco.com.br";
         String clientId = "8ff166a4-2547-4398-84ed-83a52aa5e676";
 
         Map<String, Object> mapHeader = new HashMap<>();
@@ -24,7 +27,7 @@ public class ServerTokenBradesco {
         mapHeader.put("typ", "JWT");
 
         Map<String, Object> mapClaims = new HashMap<>();
-        mapClaims.put("aud", uri);
+        mapClaims.put("aud", url);
         mapClaims.put("sub", clientId);
         mapClaims.put("iat", String.valueOf(System.currentTimeMillis() / 1_000));
         mapClaims.put("exp", String.valueOf((System.currentTimeMillis() / 1_000) + 2_592_000));
@@ -45,11 +48,12 @@ public class ServerTokenBradesco {
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
-        return new RestTemplate().postForObject(uri, request, ServerToken.class);
+        return new RestTemplate().postForObject(url, request, ServerToken.class);
     }
     public static String strAccessToken() {
-        ServerToken serverToken = getAccessToken();
-        return serverToken.getAccess_token();
+//        ServerToken serverToken = getAccessToken();
+//        return serverToken.getAccess_token();
+        return "";
     }
 
 }
